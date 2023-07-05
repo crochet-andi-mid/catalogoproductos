@@ -6,19 +6,28 @@ function sendWhatsApp(phoneNumber, productName, imageName) {
   link.href = url;
   link.target = "_blank";
   link.click();
-  
-  var image = new Image();
-  image.src = imageName;
-  image.addEventListener('load', function() {
-    var canvas = document.createElement('canvas');
-    canvas.width = image.width;
-    canvas.height = image.height;
-    var context = canvas.getContext('2d');
-    context.drawImage(image, 0, 0);
-    var dataURL = canvas.toDataURL('image/png');
-    
-    link.href = dataURL;
-    link.download = imageName;
-    link.click();
-  });
+
+  setTimeout(function() {
+    var image = new Image();
+    image.src = imageName;
+
+    image.addEventListener('load', function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      var context = canvas.getContext('2d');
+      context.drawImage(image, 0, 0);
+
+      canvas.toBlob(function(blob) {
+        var formData = new FormData();
+        formData.append("image", blob, imageName);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://api.whatsapp.com/send");
+        xhr.setRequestHeader("Content-Type", "multipart/form-data");
+        xhr.send(formData);
+      });
+    });
+  }, 1000);
 }
