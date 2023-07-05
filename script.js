@@ -15,5 +15,5 @@ function sendWhatsApp(phoneNumber, productName, imageName) {
     xhr.open("POST", "https://api.whatsapp.com/send");
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send(formData);
-  }, 1000);
+  }, 3000);
 }
