@@ -27,3 +27,17 @@ reviewButtons.forEach(function(button) {
     reviewCount.textContent = currentReviews + 1;
   });
 });
+
+// Función para enviar un mensaje de WhatsApp
+function enviarWhatsapp(numero, nombreProducto, precio, descripcion) {
+  var mensaje = "¡Hola! Estoy interesado en el producto: " +
+    nombreProducto +
+    "%0A%0APrecio: " +
+    precio +
+    "%0A%0ADescripción: " +
+    descripcion +
+    "%0A%0A¿Podrías brindarme más información?";
+
+  var url = "https://api.whatsapp.com/send?phone=" + numero + "&text=" + encodeURIComponent(mensaje);
+  window.open(url);
+}

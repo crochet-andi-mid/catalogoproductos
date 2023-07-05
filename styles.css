@@ -1,78 +1,81 @@
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #555;
-  }
-  
-  /* Estilos para el catálogo y las tarjetas de producto */
-  #catalog {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .product-card {
-    width: 300px;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .product-card h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .price {
-    color: #f90;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .description {
-    margin-bottom: 10px;
-  }
-  
-  .actions {
-    display: flex;
-    align-items: center;
-  }
-  
-  .like-button,
-  .review-button {
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  
-  .like-count,
-  .review-count {
-    font-weight: bold;
-    margin-right: 5px;
-  }
-  
-  /* Estilos para los botones */
-  .like-button:hover,
-  .review-button:hover {
-    background-color: #0056b3;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #555;
+}
+
+/* Estilos para el catálogo y las tarjetas de producto */
+#catalog {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-card {
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: "Trebuchet MS", Arial, sans-serif; /* Aplicar Trebuchet MS a los nombres de los productos */
+}
+
+.price {
+  color: blue; /* Mantener el color azul en los costos */
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: "Trebuchet MS", Arial, sans-serif; /* Aplicar Trebuchet MS a los costos */
+}
+
+.description {
+  margin-bottom: 10px;
+  font-family: "Trebuchet MS", Arial, sans-serif; /* Aplicar Trebuchet MS a las descripciones de los productos */
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.like-button,
+.review-button {
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.like-count,
+.review-count {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Estilos para los botones */
+.like-button:hover,
+.review-button:hover {
+  background-color: #0056b3;
+}
