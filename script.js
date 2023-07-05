@@ -10,12 +10,25 @@ whatsappButtons.forEach(function(button) {
     var productDescription = productCard.querySelector('.description').textContent;
     var productImage = productCard.querySelector('img').src;
 
-    // Modificar la URL de la imagen para que sea relativa al archivo HTML
-    var imageURL = window.location.href.replace('index.html', productImage);
+    // Crear un enlace dinámico con los datos del producto
+    var whatsappLink = document.createElement('a');
+    whatsappLink.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent('¡Hola! Estoy interesado en el producto ' + productName + '. Precio: ' + productPrice + '. Descripción: ' + productDescription);
+    whatsappLink.target = '_blank';
 
-    var whatsappURL = 'https://api.whatsapp.com/send?text=' + encodeURIComponent('¡Hola! Estoy interesado en el producto ' + productName + '. Precio: ' + productPrice + '. Descripción: ' + productDescription + '. Adjunto una imagen: ' + imageURL);
+    // Crear una imagen oculta para adjuntarla al enlace de WhatsApp
+    var imageElement = document.createElement('img');
+    imageElement.src = productImage;
+    imageElement.style.display = 'none';
 
-    // Abrir la ventana de WhatsApp con el mensaje predefinido
-    window.open(whatsappURL);
+    // Adjuntar la imagen al enlace de WhatsApp
+    whatsappLink.appendChild(imageElement);
+
+    // Simular un clic en el enlace de WhatsApp para abrir la aplicación
+    var event = new MouseEvent('click', {
+      view: window,
+      bubbles: false,
+      cancelable: true
+    });
+    whatsappLink.dispatchEvent(event);
   });
 });
