@@ -1,30 +1,15 @@
-// Obtener todos los botones de "Like" en las tarjetas de producto
-var likeButtons = document.querySelectorAll('.like-button');
+// Obtener todos los botones de "Contactar por WhatsApp"
+var whatsappButtons = document.querySelectorAll('.whatsapp-button');
 
-// Agregar un manejador de eventos a cada botón de "Like"
-likeButtons.forEach(function(button) {
+// Agregar un manejador de eventos a cada botón de "Contactar por WhatsApp"
+whatsappButtons.forEach(function(button) {
   button.addEventListener('click', function() {
     var productCard = this.parentNode.parentNode;
-    var likeCount = productCard.querySelector('.like-count');
+    var nombreProducto = productCard.querySelector('h2').textContent;
+    var precio = productCard.querySelector('.price').textContent;
+    var descripcion = productCard.querySelector('.description').textContent;
 
-    // Incrementar el contador de likes
-    var currentLikes = parseInt(likeCount.textContent);
-    likeCount.textContent = currentLikes + 1;
-  });
-});
-
-// Obtener todos los botones de "Review" en las tarjetas de producto
-var reviewButtons = document.querySelectorAll('.review-button');
-
-// Agregar un manejador de eventos a cada botón de "Review"
-reviewButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    var productCard = this.parentNode.parentNode;
-    var reviewCount = productCard.querySelector('.review-count');
-
-    // Incrementar el contador de reseñas
-    var currentReviews = parseInt(reviewCount.textContent);
-    reviewCount.textContent = currentReviews + 1;
+    enviarWhatsapp('+529844334844', nombreProducto, precio, descripcion);
   });
 });
 
@@ -38,6 +23,6 @@ function enviarWhatsapp(numero, nombreProducto, precio, descripcion) {
     descripcion +
     "%0A%0A¿Podrías brindarme más información?";
 
-  var url = "https://api.whatsapp.com/send?phone=" + numero + "&text=" + encodeURIComponent(mensaje);
+  var url = "https://api.whatsapp.com/send?phone=" + encodeURIComponent(numero) + "&text=" + encodeURIComponent(mensaje);
   window.open(url);
 }
