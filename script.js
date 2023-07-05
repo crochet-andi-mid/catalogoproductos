@@ -1,30 +1,18 @@
-function sendWhatsApp(phoneNumber, productName, imageName) {
-  var message = "¡Hola! Estoy interesado en el " + productName + ". ¿Podrías proporcionarme más información?";
-  var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+// Obtener todos los botones de "Enviar WhatsApp"
+var whatsappButtons = document.querySelectorAll('.whatsapp-button');
 
-  var link = document.createElement("a");
-  link.href = url;
-  link.target = "_blank";
-  document.body.appendChild(link);
-  link.click();
-}
-
-var likeButtons = document.querySelectorAll('.like-button');
-likeButtons.forEach(function(button) {
+// Agregar un manejador de eventos a cada botón de "Enviar WhatsApp"
+whatsappButtons.forEach(function(button) {
   button.addEventListener('click', function() {
     var productCard = this.parentNode.parentNode;
-    var likeCount = productCard.querySelector('.like-count');
-    var currentLikes = parseInt(likeCount.textContent);
-    likeCount.textContent = currentLikes + 1;
-  });
-});
+    var productName = productCard.querySelector('h2').textContent;
+    var productImageSrc = productCard.querySelector('img').getAttribute('src');
+    var message = '¡Hola! Estoy interesado en el producto ' + productName + '.';
 
-var reviewButtons = document.querySelectorAll('.review-button');
-reviewButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    var productCard = this.parentNode.parentNode;
-    var reviewCount = productCard.querySelector('.review-count');
-    var currentReviews = parseInt(reviewCount.textContent);
-    reviewCount.textContent = currentReviews + 1;
+    // Crear un enlace de WhatsApp con la imagen adjunta
+    var whatsappLink = 'https://wa.me/+529844334844?text=' + encodeURIComponent(message) + '&attachment=' + encodeURIComponent(productImageSrc);
+    
+    // Abrir enlace de WhatsApp en una nueva pestaña
+    window.open(whatsappLink, '_blank');
   });
 });
